@@ -21,7 +21,7 @@
 #define  PI  3.1415926535897932384626433832795
 #define  VC  2.99792458e8 
 #define CLOCKS_PER_SEC 1000
-#define nodetime 2
+#define nodetime 200
 
 void IFT_mathematica(int Num, complex<double> *Matrix_ori, complex<double> *ISAR1_t1)
 {
