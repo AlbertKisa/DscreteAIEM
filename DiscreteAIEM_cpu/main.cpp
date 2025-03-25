@@ -9,17 +9,15 @@
 #include <complex>
 #include <ctime>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <random>
 #include <sstream>
 
 #include "Fun.h"
-#include "GlobalViariables.h"
 #include "complex0.h"
 #include "mine.h"
 
-// using namespace std;
-//  ��������
 #define PI 3.1415926535897932384626433832795
 #define VC 2.99792458e8
 #define CLOCKS_PER_SEC 1000
@@ -368,10 +366,14 @@ int main() {
     a1hh = real(timehh[i]);
     a2hh = imag(timehh[i]);
     a3hh = abs(timehh[i]);
-    cout << tt << "  " << a1vv << "  " << a2vv << "  " << a3vv << endl;
-    outfile_time << tt * 1000 << "        " << a1vv << "        " << a2vv
-                 << "        " << a3vv << "        " << a1hh << "        "
-                 << a2hh << "        " << a3hh << endl;
+
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(8) << tt * 1e3 << "	" << a1vv
+       << "	" << a2vv << "	" << a3vv << "	" << a1hh << "	" << a2hh
+       << "	" << a3hh << "\n";
+    std::cout << ss.str();
+
+    outfile_time << ss.str();
   }
   for (f = -200; f <= 200; f++) {
     complex<double> tempvv = {0.0, 0.0};
@@ -385,8 +387,11 @@ int main() {
     }
     sfvv = delt_t * real(timevv[0]) + 2 * real(tempvv);
     sfhh = delt_t * real(timehh[0]) + 2 * real(temphh);
-    outfile_doppler << f << "      " << sfvv << "      " << sfhh << endl;
-    cout << f << "  " << sfvv << "  " << sfhh << endl;
+    std::stringstream ss;
+    ss << f << std::fixed << std::setprecision(8) << "	" << sfvv << "	"
+       << sfhh << "\n";
+    std::cout << ss.str();
+    outfile_doppler << ss.str();
   }
   outfile_doppler.close();
   outfile_time.close();
