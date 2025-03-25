@@ -1,2 +1,0 @@
-//double   **surnode;
-//int node;

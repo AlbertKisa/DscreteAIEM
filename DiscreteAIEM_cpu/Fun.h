@@ -12,4 +12,4 @@ double Wk(double k, double uf);
 
 double skf(double k, double siti, double uf);
 
-#endif // !defined(AFX_FUN_H_)
+#endif  // !defined(AFX_FUN_H_)
