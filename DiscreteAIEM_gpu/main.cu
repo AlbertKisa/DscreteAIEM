@@ -35,11 +35,11 @@ int main(int argc, char* argv[]) {
 	complex<double> timehh[nodetime + 1] = { 0, 0 };
 	std::ofstream outfile_doppler;
 	std::ofstream outfile_time;
-	outfile_doppler.open("output//doppler.txt");
-	outfile_time.open("output//time.txt");
-	double sfvv = 0;
-	double sfhh = 0;
-	double a1vv, a1hh;
+        outfile_doppler.open("../output/doppler.txt");
+        outfile_time.open("../output//time.txt");
+        double sfvv = 0;
+        double sfhh = 0;
+        double a1vv, a1hh;
 	double a2vv, a2hh;
 	double a3vv, a3hh;
 	int f;

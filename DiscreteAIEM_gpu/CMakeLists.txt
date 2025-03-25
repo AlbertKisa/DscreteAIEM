@@ -18,7 +18,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 set_target_properties(${PROJECT_NAME} PROPERTIES 
     CUDA_SEPARABLE_COMPILATION ON
-    CUDA_ARCHITECTURES 86
+    CUDA_ARCHITECTURES 75
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE 
