@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
     a2hh = imag(timehh[i]);
     a3hh = abs(timehh[i]);
     std::stringstream ss;
-    ss << std::fixed << std::setprecision(8) << tt * 1e3 << "	" << a1vv
+    ss << std::fixed << std::setprecision(9) << tt * 1e3 << "	" << a1vv
        << "	" << a2vv << "	" << a3vv << "	" << a1hh << "	" << a2hh
        << "	" << a3hh << "\n";
     std::cout << ss.str();
@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
     sfvv = delt_t * real(timevv[0]) + 2 * real(tempvv);
     sfhh = delt_t * real(timehh[0]) + 2 * real(temphh);
     std::stringstream ss;
-    ss << f << std::fixed << std::setprecision(8) << "	" << sfvv << "	"
+    ss << f << std::fixed << std::setprecision(9) << "	" << sfvv << "	"
        << sfhh << "\n";
     std::cout << ss.str();
     outfile_doppler << ss.str();
