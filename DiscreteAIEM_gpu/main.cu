@@ -55,6 +55,10 @@ int main(int argc, char* argv[]) {
   for (i = 0; i <= nodetime; i++) {
     tt = delt_t * i;
     SSA1_linear(eps_g, vk, the_s, phi_s, the_i, phi_i, U, tt, b);
+    std::stringstream ss1;
+    ss1 << std::fixed << std::setprecision(9) << " b[0]:" << b[0]
+        << " b[1]:" << b[1];
+    std::cout << "i:" << i << ss1.str() << std::endl;
 
     resultvv[i] = b[0];
     resulthh[i] = b[1];

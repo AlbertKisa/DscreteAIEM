@@ -232,7 +232,8 @@ void SSA1_linear(complex<double> eps_r, double vk, double the_s, double phi_s,
   qx = ksx - k0x;
   qy = ksy - k0y;
   double kspk0[2] = {qx, qy};
-  vw = 2 * PI * freq;  //���䲨��Ƶ��
+
+  vw = 2 * PI * freq;
   qv0 = vw * vw / vc / vc;
 
   q0 = vk * cos(the_i);                        // wc
@@ -254,21 +255,17 @@ void SSA1_linear(complex<double> eps_r, double vk, double the_s, double phi_s,
 
   B1vv = C10 * b1v;
   B1hh = C20 * qv0 * ksk0;
-  // std::cout << "B1hh=" << B1hh << endl;
-  // system("pause");
-  double lamda = vc / freq;
 
-  double kiR = 0, ks0r = 0, kkr = 0;
-  double g0 = 9.81;
   double k;
-
-  double LLL = 200 * PI * lamda;
-  double sigma = 0;
+  double g0 = 9.81;
+  double kiR = 0, ks0r = 0, kkr = 0;
 
   int Num = 200;
   int Num1 = 2 * Num + 1;
+
   double delt = 0.01;
   double gt = Num1 * delt / 6.0;
+
   // Device memory allocation
   cuDoubleComplex *d_WK, *d_WK0, *d_Ker3, *d_Sum;
   double* d_kspk0;

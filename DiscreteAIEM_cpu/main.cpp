@@ -112,11 +112,8 @@ void SSA1_linear(complex<double> eps_r, double vk, double the_s, double phi_s,
   double k0x, k0y, ksx, ksy, kix, kiy;
   double ww;
 
-  vw = 2 * PI * freq;
   kix = vk * sin(the_i) * cos(phi_i);
   kiy = vk * sin(the_i) * sin(phi_i);
-  double ki[2] = {kix, kiy};
-
   k0x = vk * sin(the_i) * cos(phi_i);
   k0y = vk * sin(the_i) * sin(phi_i);
   ksx = vk * sin(the_s) * cos(phi_s);
@@ -124,6 +121,8 @@ void SSA1_linear(complex<double> eps_r, double vk, double the_s, double phi_s,
   qx = ksx - k0x;
   qy = ksy - k0y;
   double kspk0[2] = {qx, qy};
+
+  vw = 2 * PI * freq;
   qv0 = vw * vw / vc / vc;
 
   q0 = vk * cos(the_i);
@@ -144,17 +143,16 @@ void SSA1_linear(complex<double> eps_r, double vk, double the_s, double phi_s,
 
   B1vv = C10 * b1v;
   B1hh = C20 * qv0 * ksk0;
-  double gt;
-  double kiR = 0, ks0r = 0, kkr = 0;
-  double g0 = 9.81;
+
   double k;
+  double g0 = 9.81;
+  double kiR = 0, ks0r = 0, kkr = 0;
 
   int Num = 200;
   int Num1 = 2 * Num + 1;
 
   double delt = 0.01;
-
-  gt = Num1 * delt / 6.0;
+  double gt = Num1 * delt / 6.0;
 
   complex<double> **WK;
   WK = (complex<double> **)malloc(sizeof(complex<double> *) * Num1);  //
@@ -355,6 +353,10 @@ int main() {
   for (i = 0; i <= nodetime; i++) {
     tt = delt_t * i;
     SSA1_linear(eps_g, vk, the_s, phi_s, the_i, phi_i, U, tt, b);
+    std::stringstream ss1;
+    ss1 << std::fixed << std::setprecision(9) << " b[0]:" << b[0]
+        << " b[1]:" << b[1];
+    std::cout << "i:" << i << ss1.str() << std::endl;
 
     resultvv[i] = b[0];
     resulthh[i] = b[1];
